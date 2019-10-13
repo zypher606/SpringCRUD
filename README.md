@@ -8,12 +8,12 @@
     }
 ### API Endpoints
 
-    1. /books                GET
-    2. /books/addBook        POST
-    3. /books/{id}           PUT
-    4. /books/{id}           DELETE
-    5. /transaction/         GET
-    6. /transaction/{id}     GET
-    6. /transaction/         POST
-    7. /transaction/{id}     DELETE
+    1. /books                GET        Get all list of boooks
+    2. /books/{id}           GET        get book details by ID
+    3. /books/addBook        POST       add new book
+    4. /books/{id}           PUT        edit book, edit title or total book count in archive
+    5. /books/{id}           DELETE     delete book
+    6. /transactions/        GET        get all transaction list
+    7. /transactions/{id}    GET        get details of a transaction using id
+    8. /transactions/        POST       init a transaction type: RETURN or BORROW
     

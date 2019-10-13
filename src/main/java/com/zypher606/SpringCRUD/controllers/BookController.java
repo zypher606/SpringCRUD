@@ -44,6 +44,7 @@ public class BookController {
     public Books createBook(@Valid @RequestBody Books books) {
         ObjectId objectId = ObjectId.get();
         books.set_id(objectId);
+        books.setAvailable_books_count(books.getTotal_books_count());
         booksRepository.save(books);
         return booksRepository.findBy_id(objectId);
     }
