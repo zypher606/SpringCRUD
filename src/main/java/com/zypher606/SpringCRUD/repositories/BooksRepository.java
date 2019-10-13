@@ -9,4 +9,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface BooksRepository extends MongoRepository<Books, String> {
     Books findBy_id(ObjectId _id);
+    Books findBy_id(String _id);
 }

@@ -32,15 +32,20 @@ public class BookController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void modifyBookById(@PathVariable("id") ObjectId id, @Valid
     @RequestBody Books books) {
-        books.set_id(id);
-        booksRepository.save(books);
+        Books updated_book = booksRepository.findBy_id(id);
+        int new_book_count = Integer.parseInt(books.getTotal_books_count()) - Integer.parseInt(updated_book.getTotal_books_count());
+        updated_book.setAvailable_books_count(String.valueOf(Integer.parseInt(updated_book.getAvailable_books_count()) + new_book_count));
+        updated_book.setTotal_books_count(books.getTotal_books_count());
+
+        booksRepository.save(updated_book);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Books createBook(@Valid @RequestBody Books books) {
-        books.set_id(ObjectId.get());
+        ObjectId objectId = ObjectId.get();
+        books.set_id(objectId);
         booksRepository.save(books);
-        return books;
+        return booksRepository.findBy_id(objectId);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

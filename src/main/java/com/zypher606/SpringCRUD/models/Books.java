@@ -22,20 +22,22 @@ public class Books {
     @DBRef
     private List<Genres> genres;
 
-    private String books_count;
+    private String available_books_count;
+    private String total_books_count;
 
 
     public Books() {
 
     }
 
-    public Books(ObjectId _id, String title, String description, String author, List genres, String books_count) {
+    public Books(ObjectId _id, String title, String description, String author, List genres, String available_books_count, String total_books_count) {
         this._id = _id;
         this.title = title;
         this.description = description;
         this.author = author;
         this.genres = genres;
-        this.books_count = books_count;
+        this.available_books_count = available_books_count;
+        this.total_books_count = total_books_count;
     }
 
 
@@ -56,8 +58,12 @@ public class Books {
         return author;
     }
 
-    public String getBooks_count() {
-        return books_count;
+    public String getAvailable_books_count() {
+        return available_books_count;
+    }
+
+    public String getTotal_books_count() {
+        return total_books_count;
     }
 
     public List getGenres() {
@@ -81,8 +87,12 @@ public class Books {
         this.author = author;
     }
 
-    public void setBooks_count(String books_count) {
-        this.books_count = books_count;
+    public void setAvailable_books_count(String available_books_count) {
+        this.available_books_count = available_books_count;
+    }
+
+    public void setTotal_books_count(String total_books_count) {
+        this.total_books_count = total_books_count;
     }
 
     public void setGenres(List<Genres> genres) {
