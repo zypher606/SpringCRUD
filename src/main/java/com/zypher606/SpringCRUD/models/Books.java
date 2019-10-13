@@ -3,12 +3,14 @@ package com.zypher606.SpringCRUD.models;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.lang.reflect.Array;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
-
-public class Book {
+@Document
+public class Books {
 
     @Id
     private ObjectId _id;
@@ -18,23 +20,22 @@ public class Book {
     private String author;
 
     @DBRef
-    private Collection<Genre> genres;
+    private List<Genres> genres;
 
     private String books_count;
-    private String shelf_location;
 
 
-    public Book() {
+    public Books() {
 
     }
 
-    public Book(ObjectId _id, String title, String description, String author, String books_count, String shelf_location) {
+    public Books(ObjectId _id, String title, String description, String author, List genres, String books_count) {
         this._id = _id;
         this.title = title;
         this.description = description;
         this.author = author;
+        this.genres = genres;
         this.books_count = books_count;
-        this.shelf_location = shelf_location;
     }
 
 
@@ -59,11 +60,7 @@ public class Book {
         return books_count;
     }
 
-    public String getShelf_location() {
-        return shelf_location;
-    }
-
-    public Collection getGenre() {
+    public List getGenres() {
         return genres;
     }
 
@@ -88,11 +85,7 @@ public class Book {
         this.books_count = books_count;
     }
 
-    public void setShelf_location(String shelf_location) {
-        this.shelf_location = shelf_location;
-    }
-
-    public void setGenre(Collection<Genre> genres) {
-        this.genres = (Collection<Genre>) genres;
+    public void setGenres(List<Genres> genres) {
+        this.genres = genres;
     }
 }

@@ -2,22 +2,25 @@ package com.zypher606.SpringCRUD.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-public class Transaction {
+public class Transactions {
     @Id
-    public ObjectId _id;
+    private ObjectId _id;
 
-    public String book_id;
-    public String transaction_type;
-    public String transaction_date;
+    @DBRef
+    private Books books;
 
-    public Transaction() {
+    private String transaction_type;
+    private String transaction_date;
+
+    public Transactions() {
 
     }
 
-    public Transaction(ObjectId _id, String book_id, String transaction_type, String transaction_date) {
+    public Transactions(ObjectId _id, Books books, String transaction_type, String transaction_date) {
         this._id = _id;
-        this.book_id = book_id;
+        this.books = books;
         this.transaction_type = transaction_type;
         this.transaction_date = transaction_date;
     }
@@ -28,8 +31,8 @@ public class Transaction {
         this._id = _id;
     }
 
-    public void setBook_id(String book_id) {
-        this.book_id = book_id;
+    public void setBook_id(Books books) {
+        this.books = books;
     }
 
     public void setTransaction_type(String transaction_type) {
@@ -45,8 +48,8 @@ public class Transaction {
         return _id.toHexString();
     }
 
-    public String getBook_id() {
-        return book_id;
+    public Books getBooks() {
+        return books;
     }
 
     public String getTransaction_type() {

@@ -2,19 +2,21 @@ package com.zypher606.SpringCRUD.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Genre {
+@Document
+public class Genres {
 
     @Id
-    public ObjectId _id;
+    private ObjectId _id;
 
-    public String name;
+    private String name;
 
-    public Genre() {
+    public Genres() {
 
     }
 
-    public Genre(ObjectId _id, String name) {
+    public Genres(ObjectId _id, String name) {
         this._id = _id;
         this.name = name;
     }
