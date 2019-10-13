@@ -12,17 +12,17 @@ public class Transactions {
     private Books books;
 
     private String transaction_type;
-    private String transaction_date;
+    private String transaction_timestamp;
 
     public Transactions() {
 
     }
 
-    public Transactions(ObjectId _id, Books books, String transaction_type, String transaction_date) {
+    public Transactions(ObjectId _id, Books books, String transaction_type, String transaction_timestamp) {
         this._id = _id;
         this.books = books;
         this.transaction_type = transaction_type;
-        this.transaction_date = transaction_date;
+        this.transaction_timestamp = transaction_timestamp;
     }
 
 
@@ -31,7 +31,7 @@ public class Transactions {
         this._id = _id;
     }
 
-    public void setBook_id(Books books) {
+    public void setBooks(Books books) {
         this.books = books;
     }
 
@@ -39,8 +39,8 @@ public class Transactions {
         this.transaction_type = transaction_type;
     }
 
-    public void setTransaction_date(String transaction_date) {
-        this.transaction_date = transaction_date;
+    public void setTransaction_timestamp(String transaction_timestamp) {
+        this.transaction_timestamp = transaction_timestamp;
     }
 
     // Getters
@@ -56,7 +56,7 @@ public class Transactions {
         return transaction_type;
     }
 
-    public String getTransaction_date() {
-        return transaction_date;
+    public String getTransaction_timestamp() {
+        return transaction_timestamp;
     }
 }

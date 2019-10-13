@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/transactions")
 public class TransationController {
     @Autowired
     private TransactionsRepository transactionsRepository;
@@ -27,22 +28,22 @@ public class TransationController {
     private BooksRepository booksRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Transactions> getAllTransactions() {
-        return transactionsRepository.findAll();
+    public JSONObject getAllTransactions() {
+        return (new Api("success", "", transactionsRepository.findAll())).getApiResponse();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Transactions getPetById(@PathVariable("id") ObjectId id) {
-        return transactionsRepository.findBy_id(id);
+    public JSONObject getPetById(@PathVariable("id") ObjectId id) {
+        return (new Api("success", "", transactionsRepository.findBy_id(id))).getApiResponse();
     }
 
     // * No Modification of Transactions
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Object createTransaction(@Valid @RequestBody Transactions transactions) {
+    public JSONObject createTransaction(@Valid @RequestBody Transactions transactions) {
         ObjectId transaction_objectId = ObjectId.get();
         transactions.set_id(transaction_objectId);
-
+        transactions.setTransaction_timestamp((new Date()).toString());
 
         Books books = booksRepository.findBy_id(transactions.getBooks().get_id());
 
