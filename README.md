@@ -10,7 +10,7 @@
 
     1. /books                GET        Get all list of boooks
     2. /books/{id}           GET        get book details by ID
-    3. /books/addBook        POST       add new book
+    3. /books/               POST       add new book
     4. /books/{id}           PUT        edit book, edit title or total book count in archive
     5. /books/{id}           DELETE     delete book
     6. /transactions/        GET        get all transaction list
